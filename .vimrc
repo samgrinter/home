@@ -146,38 +146,5 @@ nmap tn :set number!<cr>
 " rebuild python
 nmap prb :!python setup.py install --prefix=~<cr>
 
-let $kernel_version=system('uname -r | tr -d "\n"')
 
-
-"""" PROFILES
-" 4 Spaces (4 spaces instead of tabs)
-
-"" Kernel
-"set noexpandtab                              " use tabs, not spaces
-"set tabstop=8                                " tab this width of spaces
-"set shiftwidth=8                             " indent this width of spaces
-"au Syntax c,cpp syn match Error /^ \+/       " highlight any leading spaces
-"au Syntax c,cpp syn match Error / \+$/       " highlight any trailing spaces
-""au Syntax c,cpp syn match Error /\%>80v.\+/  " highlight anything past 80 in red
-"au Syntax c,cpp syn keyword cType uint ubyte ulong boolean_t
-"au Syntax c,cpp syn keyword cType int64_t int32_t int16_t int8_t
-"au Syntax c,cpp syn keyword cType uint64_t uint32_t uint16_t uint8_t
-"au Syntax c,cpp syn keyword cType u_int64_t u_int32_t u_int16_t u_int8_t
-"au Syntax c,cpp syn keyword cOperator likely unlikely
-
-
-" Maximize window on startup
-"if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-"  set lines=999 columns=999
-"else
-  " This is console Vim.
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-"endif
 
