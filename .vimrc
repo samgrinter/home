@@ -36,8 +36,9 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 Plugin 'Valloric/YouCompleteMe'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Git plugin now hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
 " lots of colorschemes
 Plugin 'flazz/vim-colorschemes'
 

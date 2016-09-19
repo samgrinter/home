@@ -139,11 +139,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias cdp='cd ~/Synap/pi/'
 alias cdpi='cd ~/Synap/pi/ ; ipython3'
-alias cdm='cd /media/sf_milbuntu-share'
+alias cdm='cd /media/sf_Share'
 alias cdc='cd ~/SynapWeb/content'
 alias cdd='cd ~/SynapWeb/content/dash'
 alias hfs='hadoop fs'
 alias hls='hfs -ls'
+alias get='git'
 
 
 
