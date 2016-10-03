@@ -41,7 +41,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'wincent/command-t'
 " lots of colorschemes
 Plugin 'flazz/vim-colorschemes'
-
+" flawless Haskell indent
+Plugin 'itchyny/vim-haskell-indent'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,7 +108,11 @@ set softtabstop=4  " backspace amount when tab-aligned (like using tabs)
 "" Colors
 "colorscheme pencil  " the color scheme
 highlight LineNr ctermfg=grey
-
+"highlight Constant ctermfg=124
+"highlight Number ctermfg=124
+"highlight String ctermfg=124
+"colorscheme peachpuff
+ 
 
 
 "" Shortcuts
@@ -125,8 +130,9 @@ vnoremap : ;
 " fd to escape insert mode.. no, f is too common terminal char and introduces
 " distracting delay after f is typed and its apperance
 " i suppose I'll use j j instead as english words dont end with j anyway 
-" inoremap <special> fd <ESC>
 inoremap <special> jj <ESC>
+" its nice to be able move from insert to normal in either direction
+inoremap <special> jk <ESC>l
 " backspace to toggle between current and previous file
 " forces (re)indentation of a block of code
 nmap <c-j> vip=

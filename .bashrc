@@ -133,18 +133,17 @@ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export HADOOP_HOME=/srv/hadoop
 export HADOOP_STREAMING="$HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar"
 export PATH="$PATH:$HADOOP_HOME/bin"
-#export PATH="$PATH:$HADOOP_HOME/sbin"
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cdp='cd ~/Synap/pi/'
 alias cdpi='cd ~/Synap/pi/ ; ipython3'
 alias cdm='cd /media/sf_Share'
+alias cdn='cd /media/sf_nilbuntu-share'
 alias cdc='cd ~/SynapWeb/content'
 alias cdd='cd ~/SynapWeb/content/dash'
 alias hfs='hadoop fs'
 alias hls='hfs -ls'
 alias get='git'
-
 
 
