@@ -121,11 +121,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#export BLAS=/usr/lib/openblas-base/libblas.so.3
-#export LAPACK=/usr/lib/openblas-base/liblapack.so.3
-#export BLAS=/usr/lib/atlas-base/libcblas.so.3
-#export LAPACK=/usr/lib/atlas-base/liblapack_atlas.so.3
-#export ATLAS=/usr/lib/atlas-base/libatlas.so.3
+# use macvim if exists (with execute permission)
+if [ -x /Applications/MacPorts/MacVim.app/Contents/MacOS/Vim ]; then
+    alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+fi
+
 
 export GIT_EDITOR=vim
 
@@ -136,14 +136,10 @@ export PATH="$PATH:$HADOOP_HOME/bin"
 
 alias ..='cd ..'
 alias ...='cd ../..'
-alias cdp='cd ~/Synap/pi/'
-alias cdpi='cd ~/Synap/pi/ ; ipython3'
 alias cdm='cd /media/sf_Share'
-alias cdn='cd /media/sf_nilbuntu-share'
-alias cdc='cd ~/SynapWeb/content'
-alias cdd='cd ~/SynapWeb/content/dash'
 alias hfs='hadoop fs'
 alias hls='hfs -ls'
 alias get='git'
+alias ls='ls -lah'
 
 
