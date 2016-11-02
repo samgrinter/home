@@ -121,18 +121,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# use macvim if exists (with execute permission)
-if [ -x /Applications/MacPorts/MacVim.app/Contents/MacOS/Vim ]; then
-    alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
-fi
-
-
 export GIT_EDITOR=vim
-
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export HADOOP_HOME=/srv/hadoop
 export HADOOP_STREAMING="$HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar"
 export PATH="$PATH:$HADOOP_HOME/bin"
+
+# use macvim if exists (with execute permission)
+if [ -x /Applications/MacPorts/MacVim.app/Contents/MacOS/Vim ]; then
+    alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+    export GIT_EDITOR='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
