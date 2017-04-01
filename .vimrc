@@ -43,6 +43,8 @@ Plugin 'wincent/command-t'
 Plugin 'flazz/vim-colorschemes'
 " flawless Haskell indent
 Plugin 'itchyny/vim-haskell-indent'
+" stan highlighting and more
+Plugin 'mdlerch/mc-stan.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,6 +67,8 @@ set textwidth=80                " wrap at
 "set autoindent smartindent      " smarter indent behavior
 " smartindent has been depreciated. filetype-based indentation or cindent may
 " work better
+"set nocindent " for no extra indentation after opening ( { etc.
+set cindent " for no extra indentation after opening ( { etc.
 set smarttab                    " make tab and backspace smarter
 "set nowrap                      " don't wrap long lines
 set wrap linebreak breakindent nolist  " soft/visual-wrap long lines
@@ -99,10 +103,35 @@ set cinoptions=:0,l1,t0,g0      " case labels at column 0,
                                 " c++ scope declarations at column 0
 
 "" Tabs
+" set expandtab      " use spaces, not tabs
+" set tabstop=4      " tab this width of spaces
+" set shiftwidth=4   " indent this width of spaces
+" set softtabstop=4  " backspace amount when tab-aligned (like using tabs)
+
+
+" trying to get space-only behavior working when editing R files
 set expandtab      " use spaces, not tabs
-set tabstop=4      " tab this width of spaces
+set tabstop=8      " tab this width of spaces
 set shiftwidth=4   " indent this width of spaces
-set softtabstop=4  " backspace amount when tab-aligned (like using tabs)
+set softtabstop=0  " backspace amount when tab-aligned (like using tabs)
+set smarttab
+
+    "tabstop
+    "The width of a hard tabstop measured in "spaces" -- effectively the (maximum) width of an actual tab character.
+
+    "shiftwidth
+    "The size of an "indent". It's also measured in spaces, so if your code base indents with tab characters then you want shiftwidth to equal the number of tab characters times tabstop. This is also used by things like the =, > and < commands.
+
+    "softtabstop
+    "Setting this to a non-zero value other than tabstop will make the tab key (in insert mode) insert a combination of spaces (and possibly tabs) to simulate tab stops at this width.
+
+    "expandtab
+    "Enabling this will make the tab key (in insert mode) insert spaces instead of tab characters. This also affects the behavior of the retab command.
+
+    "smarttab
+    "Enabling this will make the tab key (in insert mode) insert spaces or tabs to go to the next indent of the next tabstop when the cursor is at the beginning of a line (ie: the only preceding characters are whitespace).
+
+
 
 
 "" Colors
@@ -154,4 +183,7 @@ nmap tn :set number!<cr>
 nmap prb :!python setup.py install --prefix=~<cr>
 
 
+
+" for MacVim
+autocmd! GUIEnter * set vb t_vb=
 
