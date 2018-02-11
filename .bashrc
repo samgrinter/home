@@ -129,8 +129,8 @@ export PATH="$PATH:$HADOOP_HOME/bin"
 
 # use macvim if exists (with execute permission)
 if [ -x /Applications/MacPorts/MacVim.app/Contents/MacOS/Vim ]; then
-    alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
-    export GIT_EDITOR='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+    export GIT_EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 fi
 
 alias ..='cd ..'
