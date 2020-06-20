@@ -1,3 +1,3 @@
 # Summary
-Linux configuration files to share between machines
+Shell configuration files to share between machines
 
