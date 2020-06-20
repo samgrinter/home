@@ -18,40 +18,41 @@
 
 """" COMMON SETTINGS
 set nocompatible                " vim defaults, not vi
-filetype off                  " required
+filetype off                  " required for vundle (reenabled below)
+set ruler
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" https://black.readthedocs.io/en/stable/editor_integration.html
+Plugin 'ambv/black'
+" let g:black_linelength = 79
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ycm-core/YouCompleteMe'
 " Git plugin now hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'wincent/command-t'
+"Plugin 'wincent/command-t'
 " lots of colorschemes
 Plugin 'flazz/vim-colorschemes'
 " flawless Haskell indent
-Plugin 'itchyny/vim-haskell-indent'
+"Plugin 'itchyny/vim-haskell-indent'
 " stan highlighting and more
-Plugin 'mdlerch/mc-stan.vim'
+"Plugin 'mdlerch/mc-stan.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on              " enable filetypes and plugins
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-let g:omni_sql_no_default_maps = 1 "disable incessant warning that something sql-related is not configured
+let g:omni_sql_no_default_maps = 1 "disable <c-> sql-completion
 
 " to let command-t find files near top level of directories with more files than CommandTMaxFiles
 " I ran into this limit by leaving too many repositories cloned in ~
@@ -63,7 +64,7 @@ set wildignore+=*.o,*.obj,*.git
 
 "" General
 set encoding=utf-8
-set textwidth=80                " wrap at
+""set textwidth=80                " wrap at
 "set autoindent smartindent      " smarter indent behavior
 " smartindent has been depreciated. filetype-based indentation or cindent may
 " work better
@@ -111,38 +112,21 @@ set cinoptions=:0,l1,t0,g0      " case labels at column 0,
 
 " trying to get space-only behavior working when editing R files
 set expandtab      " use spaces, not tabs
-set tabstop=8      " tab this width of spaces
+set tabstop=8      " if there are tabs, visualize as this width of spaces
 set shiftwidth=4   " indent this width of spaces
 set softtabstop=0  " backspace amount when tab-aligned (like using tabs)
-set smarttab
-
-    "tabstop
-    "The width of a hard tabstop measured in "spaces" -- effectively the (maximum) width of an actual tab character.
-
-    "shiftwidth
-    "The size of an "indent". It's also measured in spaces, so if your code base indents with tab characters then you want shiftwidth to equal the number of tab characters times tabstop. This is also used by things like the =, > and < commands.
-
-    "softtabstop
-    "Setting this to a non-zero value other than tabstop will make the tab key (in insert mode) insert a combination of spaces (and possibly tabs) to simulate tab stops at this width.
-
-    "expandtab
-    "Enabling this will make the tab key (in insert mode) insert spaces instead of tab characters. This also affects the behavior of the retab command.
-
-    "smarttab
-    "Enabling this will make the tab key (in insert mode) insert spaces or tabs to go to the next indent of the next tabstop when the cursor is at the beginning of a line (ie: the only preceding characters are whitespace).
-
-
+set smarttab       " typing tab creates spaces to next shiftwidth
 
 
 "" Colors
 "colorscheme pencil  " the color scheme
-highlight LineNr ctermfg=grey
 "highlight Constant ctermfg=124
 "highlight Number ctermfg=124
 "highlight String ctermfg=124
-"colorscheme peachpuff
+colorscheme peachpuff
+highlight LineNr ctermfg=grey
+highlight Search cterm=NONE ctermfg=black ctermbg=grey
  
-
 
 "" Shortcuts
 " using space for leader
@@ -152,38 +136,14 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-" default s seems eclipsed by c functionality. instead mapping s to 'insert
-" one char and stay in normal mode'
+
+" mapping normal s to 'insert one char and return to normal mode'
 :nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
 :nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
-" fd to escape insert mode.. no, f is too common terminal char and introduces
-" distracting delay after f is typed and its apperance
-" i suppose I'll use j j instead as english words dont end with j anyway 
-inoremap <special> jj <ESC>
+
+" fd to escape insert mode? no, f is too common terminal char and introduces
+" distracting delay after f is typed
+" I suppose I'll use jj and jk as english words dont end with j anyway 
+inoremap <special> jh <ESC>
 " its nice to be able move from insert to normal in either direction
-inoremap <special> jk <ESC>l
-" backspace to toggle between current and previous file
-" forces (re)indentation of a block of code
-nmap <c-j> vip=
-" scroll forward one screen
-"nmap <space> <c-f>
-" scroll backward one screen
-"nmap <bs> <c-b>
-" cycle between split windows
-nmap - <c-w>w
-" toggle search highlighting
-nmap th :set hlsearch!<cr>
-" toggle code folding
-nmap tf :set foldenable!<cr>
-" toggle line wrapping
-nmap tw :set wrap!<cr>
-" toggle numbering
-nmap tn :set number!<cr>
-" rebuild python
-nmap prb :!python setup.py install --prefix=~<cr>
-
-
-
-" for MacVim
-autocmd! GUIEnter * set vb t_vb=
-
+inoremap <special> jj <ESC>l
