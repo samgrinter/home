@@ -20,6 +20,7 @@
 set nocompatible                " vim defaults, not vi
 filetype off                  " required for vundle (reenabled below)
 set ruler
+set mouse=
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
